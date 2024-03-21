@@ -39,15 +39,7 @@ public class ApplicationExceptionHandler {
         errorResponse.put("error", errorMessage);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-//    public Map<String, String> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
-//        Map<String, String> errorMap = new HashMap<>();
-//        ex.getBindingResult().getFieldErrors().forEach(error->{
-//            errorMap.put(error.getField(),error.getDefaultMessage());
-//        });
-//        return errorMap;
-//    }
+
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Map<String, String>> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
         Map<String, String> errorMap = new HashMap<>();
