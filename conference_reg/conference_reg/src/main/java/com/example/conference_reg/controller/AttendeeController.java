@@ -20,8 +20,7 @@ public class AttendeeController {
     @Autowired
     private EventInter eventService;
 
-    //    @Autowired
-//    private EntityToModel entityToModel;
+ 
     @Autowired
     private ModelToEntity modelToEntity;
 
@@ -64,51 +63,6 @@ public class AttendeeController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    public Attendee convertToEntity1(AttendeeModel attendeeModel) {
-//
-//        Attendee attendee = new Attendee();
-//        attendee.setAid(attendeeModel.getAid());
-//        attendee.setAname(attendeeModel.getAname());
-//        attendee.setEmail(attendeeModel.getEmail());
-//        attendee.setAffiliation(attendeeModel.getAffiliation());
-//        return attendee;
-//    }
-//    public Event convertToEntity2(EventModel eventModel) {
-//        Event event = new Event();
-//        event.setEid(eventModel.getEid());
-//        event.setEname(eventModel.getEname());
-//        event.setDate(eventModel.getDate());
-//        event.setVenue(eventModel.getVenue());
-//        return event;
-//    }
-
-//    @GetMapping("/allattendees")
-//    public ResponseEntity<List<AttendeeModel>> getAllAttendees() {
-//        List<AttendeeModel> attendees = attendeeService.getAllAttendees();
-//        boolean isEmpty = CollectionUtils.isEmpty(attendees); //collection utils will check any empty,null values
-//        if (isEmpty) {
-//            return ResponseEntity.noContent().build();
-//        }
-//        return ResponseEntity.ok(attendees);
-//    }
 
 
 
