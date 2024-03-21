@@ -18,32 +18,4 @@ public class UserUserService implements UserDetailsService {
                 .orElseThrow(()-> new UsernameNotFoundException("user not found"+username));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//@Override
-//public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//    Optional<Owner> ownerOptional = ownerRepository.findByName(username);
-//    if (ownerOptional.isPresent()) {
-//        Owner owner = ownerOptional.get();
-//        OwnerModel ownerModel =ownerService. convertToModel(owner);
-//        System.out.println(owner.getPassword());
-//        return new UserDetails(ownerModel);
-//    } else {
-//        throw new UsernameNotFoundException("User not found: " + username);
-//    }
-// }
 }
