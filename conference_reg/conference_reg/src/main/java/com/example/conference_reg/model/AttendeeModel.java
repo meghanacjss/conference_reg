@@ -14,11 +14,9 @@ import lombok.*;
 public class AttendeeModel {
 
     private int aid;
-    @NotBlank(message="name is required")
-    @Size(max = 255, message = "Name must not exceed 255 characters")
+
     private String aname;
-    @NotBlank(message="email is required")
-    @Email(message="invalid email format")
+
     private String email;
     private String affiliation;
 
