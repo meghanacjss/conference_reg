@@ -41,14 +41,5 @@ public class AttendeeService implements AttendeeInter {
         return optionalAttendee.map(entityToModel::convertToModel1);
     }
 
-//    public AttendeeModel convertToModel1(Attendee attendee) {
-//        AttendeeModel attendeeModel = new AttendeeModel();
-//        attendeeModel.setAid(attendee.getAid());
-//        attendeeModel.setAname(attendee.getAname());
-//        attendeeModel.setEmail(attendee.getEmail());
-//        attendeeModel.setAffiliation(attendee.getAffiliation());
-//
-//        return attendeeModel;
-//    }
 
 }
