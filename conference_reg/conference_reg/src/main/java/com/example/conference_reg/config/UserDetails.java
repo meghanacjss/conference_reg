@@ -21,8 +21,7 @@ public class UserDetails implements org.springframework.security.core.userdetail
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//      return Collections.singleton(new SimpleGrantedAuthority("Owner"));
-        //  System.out.println("12334"+ authorities);
+
         return authorities;
     }
 
