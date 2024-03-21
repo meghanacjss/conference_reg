@@ -17,8 +17,6 @@ public class Payment {
     @GeneratedValue
     private int pid;
 
-    // @JsonIgnore
-
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "registrationId")
     private Registration registration;
