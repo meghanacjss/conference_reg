@@ -10,6 +10,4 @@ import java.util.List;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment,Integer> {
     List<Payment> findByRegistration(Registration registration);
-
-    void deleteByRegistration(Registration registration);
 }
