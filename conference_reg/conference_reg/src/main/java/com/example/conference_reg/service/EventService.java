@@ -48,27 +48,5 @@ public class EventService implements EventInter {
         return entityToModel.convertToModel2(event);
     }
 
-//    public EventModel convertToModel2(Event event) {
-//        if (event == null) {
-//            return null;
-//        }
-//        EventModel eventModel = new EventModel();
-//        eventModel.setEid(event.getEid());
-//        eventModel.setEname(event.getEname());
-//        eventModel.setDate(event.getDate());
-//        eventModel.setVenue(event.getVenue());
-//        return eventModel;
-//    }
 
-//    public Event convertToEntity2(EventModel eventModel) {
-//        if (eventModel == null) {
-//            return null;
-//        }
-//        Event event = new Event();
-//        event.setEid(eventModel.getEid());
-//        event.setEname(eventModel.getEname());
-//        event.setDate(eventModel.getDate());
-//        event.setVenue(eventModel.getVenue());
-//        return event;
-//    }
 }
