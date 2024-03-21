@@ -31,8 +31,7 @@ public class RegistrationController {
     public ResponseEntity<RegistrationModel> createRegistration(@Valid @RequestBody RegistrationModel registrationModel,
                                                                 @RequestParam("eid") int eid,
                                                                 @RequestParam("aid") int aid) throws UserNotFoundException {
-//        EventModel event = eventService.getEventById(eid);
-//        Optional<AttendeeModel> attendee = attendeeService.getAttendeeById(aid);
+
         Event event = new Event();
         event.setEid(eid);
         Attendee attendee = new Attendee();
@@ -56,7 +55,7 @@ public class RegistrationController {
     public ResponseEntity<List<RegistrationModel>> getRegistrationsByEvent(@RequestParam("eid") int eid) {
         Event event = new Event();
         event.setEid(eid);
-        // EventModel event = eventService.getEventById(eid);
+
         if (event == null) {
             return ResponseEntity.notFound().build();
         }
@@ -68,7 +67,7 @@ public class RegistrationController {
     public ResponseEntity<List<RegistrationModel>> getRegistrationsByAttendee(@RequestParam("aid") int aid) throws UserNotFoundException {
         Attendee attendee = new Attendee();
         attendee.setAid(aid);
-        //   Optional<AttendeeModel> attendee = attendeeService.getAttendeeById(aid);
+    
         if (attendee == null) {
             return ResponseEntity.notFound().build();
         }
@@ -88,14 +87,7 @@ public class RegistrationController {
         }
     }
 
-    //    @GetMapping("/{rid}")
-//    public ResponseEntity<RegistrationModel> getRegistrationById(@PathVariable("rid") int rid) {
-//        RegistrationModel registration = registrationService.getRegistrationById(rid);
-//        if (registration == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(registration);
-//    }
+
     @GetMapping("/get_rid/")
     public ResponseEntity<RegistrationModel> getRegistrationById(@RequestParam("rid") int rid) {
         try {
@@ -105,31 +97,6 @@ public class RegistrationController {
             return ResponseEntity.notFound().build();
         }
 
-//    @DeleteMapping("/cancel/")
-//    public ResponseEntity<String> cancelRegistration(@RequestParam int rid) {
-//        try {
-//            RegistrationModel cancelledRegistration = registrationService.cancelRegistration(rid);
-//            return ResponseEntity.ok("Registration with ID " + rid + " cancelled successfully");
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to cancel registration: " + e.getMessage());
-//        }
-//    }
 
-
-//        @DeleteMapping("/cancel/")
-//        public ResponseEntity<String> cancelRegistration(@RequestParam int rid) {
-//            try {
-//                RegistrationModel cancelledRegistration = registrationService.cancelRegistration(rid);
-//                return ResponseEntity.ok("Registration with ID " + rid + " " + StringUtils.lowerCase("Cancelled successfully"));
-//                // Using StringUtils.lowerCase() as an example of string manipulation
-//            } catch (IllegalArgumentException e) {
-//                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(StringUtils.capitalize(e.getMessage()));
-//                // Using StringUtils.capitalize() to capitalize the error message
-//            } catch (Exception e) {
-//                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to cancel registration: " + StringUtils.defaultString(e.getMessage(), "Unknown error occurred"));
-//                // Using StringUtils.defaultString() to handle null messages
-//            }
     }
 }
