@@ -26,10 +26,6 @@ public class PaymentController {
     public ResponseEntity<PaymentModel> createPayment(@Valid @RequestBody PaymentModel paymentModel, @RequestParam int rid) {
         Registration registration = new Registration();
         registration.setRid(rid);
-//        Registration registration = registrationService.getRegistrationById(rid);
-//        if (registration == null) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
         paymentModel.setRegistration(registration);
         PaymentModel createdPayment = paymentService.createPayment(paymentModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPayment);
@@ -45,12 +41,6 @@ public class PaymentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-//    @GetMapping("/all")
-//    public ResponseEntity<List<PaymentModel>> getAllPayments() {
-//        List<PaymentModel> payments = paymentService.getAllPayments();
-//        return ResponseEntity.ok(payments);
-//    }
 
     @GetMapping("/byRegistration/")
     public ResponseEntity<List<PaymentModel>> getPaymentsByRegistration(@RequestParam int rid) {
@@ -74,40 +64,4 @@ public class PaymentController {
         }
     }
 
-//    @PostMapping("/refund/")
-//    public ResponseEntity<String> refundPayment(@RequestParam("pid") int pid, @RequestParam("amount") long amount) {
-//        try {
-//            paymentService.refundPayment(pid, amount);
-//            return ResponseEntity.ok("Payment refunded successfully.");
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-//        }
-//    }
-
-//    @GetMapping("/totalPayments/")
-//    public ResponseEntity<Long> calculateTotalPayments(@RequestParam int rid) {
-//        Registration registration = new Registration();
-//        registration.setRid(rid);
-//        if (registration == null) {
-//            return new ResponseEntity<>(0L, HttpStatus.NOT_FOUND);
-//        }
-//        long totalPayments = paymentService.calculateTotalPayments(registration);
-//        return ResponseEntity.ok(totalPayments);
-//    }
 }
-
-
-
-//    @PostMapping("/create/")
-//    public ResponseEntity<PaymentModel> createPayment(@Valid @RequestBody PaymentModel paymentModel, @RequestParam int rid) {
-//        RegistrationModel registration = registrationService.getRegistrationById(rid);
-//
-//        if (registration == null) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        paymentModel.setRegistration(registration);
-//
-//        PaymentModel createdPayment = paymentService.createPayment(paymentModel,registration);
-//
-//        return ResponseEntity.status(HttpStatus.CREATED).body(createdPayment);
-//    }
