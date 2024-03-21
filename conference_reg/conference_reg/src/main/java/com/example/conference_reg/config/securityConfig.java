@@ -25,7 +25,6 @@ public class securityConfig {
         http.authorizeRequests(authorizeRequests ->
                 authorizeRequests
                         .requestMatchers(HttpMethod.POST,"/register").permitAll()
-                        //.requestMatchers(HttpMethod.GET,"/getall").hasAuthority("ROLE_USER")
                         .requestMatchers(HttpMethod.POST,"/login").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.GET,"/getall").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/createattendee/").hasRole("USER")
