@@ -34,13 +34,6 @@ private EventRepository eventRepository;
     private ModelToEntity modelToEntity;
 
 
-//    public RegistrationModel createRegistration(@Valid RegistrationModel registrationModel, Event event, Attendee attendee) {
-//        Registration registration = modelToEntity.convertToEntity5(registrationModel);
-//        registration.setEvent(event);
-//        registration.setAttendee(attendee);
-//        return entityToModel.convertToModel5(registrationRepository.save(registration));
-//    }
-
 
     public RegistrationModel createRegistration(RegistrationModel registrationModel, Event event, Attendee attendee) {
         List<Registration> registrationsForEvent = registrationRepository.findByEvent(event);
@@ -63,28 +56,8 @@ private EventRepository eventRepository;
         return registrations.stream().anyMatch(date -> date.getRdate().equals(newRegistrationDate));
 
 
-//        for (Registration existingRegistration : registrations) {
-//            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//            System.out.println(existingRegistration.getRdate());
-//            System.out.println("l");
-//            LocalDate existingRegistrationDate = LocalDate.parse(existingRegistration.getRdate(),dateFormat);
-//            System.out.println(existingRegistrationDate.atStartOfDay() +" - " + LocalDate.parse(newRegistrationDate));
-//            System.out.println(Duration.between(existingRegistrationDate.atStartOfDay(), LocalDate.parse(newRegistrationDate).atStartOfDay()).toHours() < 24);
-//            if (Duration.between(existingRegistrationDate.atStartOfDay(), LocalDate.parse(newRegistrationDate).atStartOfDay()).toHours() < 24) {
-//                return false;
-//            }
-//        }
-//        return true;
     }
 
-
-//    public List<RegistrationModel> getAllRegistrations() {
-//        List<Registration> registrations = registrationRepository.findAll();
-//        return registrations.stream()
-//                .map(this::convertToModel5)
-//                .sorted(Comparator.comparing(RegistrationModel::getRdate))
-//                .collect(Collectors.toList());
-//    }
 public List<RegistrationModel> getAllRegistrations() {
     return registrationRepository.findAll().stream()
             .sorted(Comparator.comparing(Registration::getRdate))
@@ -126,24 +99,4 @@ public RegistrationModel cancelRegistration(int rid) {
     }
 }
 
-
-//    public RegistrationModel convertToModel5(Registration registration) {
-//        RegistrationModel registrationModel = new RegistrationModel();
-//        registrationModel.setRid(registration.getRid());
-//        registrationModel.setRdate(registration.getRdate());
-//      //  registrationModel.setRamount(registration.getRamount());
-//        registrationModel.setAttendee(registration.getAttendee());
-//        registrationModel.setEvent(registration.getEvent());
-//        return registrationModel;
-//    }
-
-//    public  Registration convertToEntity5(RegistrationModel registrationModel) {
-//        Registration registration = new Registration();
-//        registration.setRid(registrationModel.getRid());
-//        registration.setRdate(registrationModel.getRdate());
-//      //  registration.setRamount(registrationModel.getRamount());
-//        registration.setAttendee(registrationModel.getAttendee());
-//        registration.setEvent(registrationModel.getEvent());
-//        return registration;
-//    }
 }
