@@ -30,32 +30,4 @@ public class OwnerService implements OwnerInter {
         Owner owner = ownerRepository.findByUsernameAndPassword(username,password);
         return entityToModel.convertToModel3(owner);
     }
-
-
-
-
-//    public OwnerModel convertToModel3(Owner owner) {
-//        if (owner == null) {
-//            return null;
-//        }
-//        OwnerModel ownerModel = new OwnerModel();
-//        ownerModel.setName(owner.getName());
-//        ownerModel.setRole(owner.getRole());
-//        ownerModel.setUsername(owner.getUsername());
-//        ownerModel.setPassword(owner.getPassword());
-//        ownerModel.setEmail(owner.getEmail());
-//        return ownerModel;
-//    }
-//    public Owner convertToEntity3(OwnerModel ownerModel) {
-//        if (ownerModel == null) {
-//            return null;
-//        }
-//        Owner owner = new Owner();
-//        owner.setName(ownerModel.getName());
-//        owner.setRole(ownerModel.getRole());
-//        owner.setUsername(ownerModel.getUsername());
-//        owner.setPassword(ownerModel.getPassword());
-//        owner.setEmail(ownerModel.getEmail());
-//        return owner;
-//    }
 }
