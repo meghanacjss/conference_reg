@@ -27,7 +27,6 @@ public class Event {
     private String ename;
     @NotNull(message = "Event date is required")
     @DateTypeValidation
-  //  @Future(message = "Event date must be in the future")
     private String date;
     @NotBlank(message = "Event venue is required")
     private String venue;
