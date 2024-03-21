@@ -25,7 +25,6 @@ public class Attendee {
     private String email;
     @AffiliationTypeValidation
     private String affiliation;
-    // @JsonIgnore
 
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "event_id")
