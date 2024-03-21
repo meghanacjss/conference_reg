@@ -10,8 +10,6 @@ import java.util.Optional;
 public interface OwnerRepository extends JpaRepository<Owner,String> {
 
     Owner findByUsernameAndPassword(String username, String password);
-//    @Query("SELECT o FROM Owner o WHERE o.username = :username")
-//    Optional<Owner> findByName(@Param("username") String username);
 
     Optional<Owner> findByName(String username);
 }
