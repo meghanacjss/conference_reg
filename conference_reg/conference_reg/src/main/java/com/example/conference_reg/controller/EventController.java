@@ -27,15 +27,6 @@ private EventInter eventService;
         return ResponseEntity.ok(events);
     }
 
-//    @GetMapping("/geteventbyid/")
-//    public ResponseEntity<EventModel> getEventById(@RequestParam int eid) {
-//        EventModel event = eventService.getEventById(eid);
-//        if (event != null) {
-//            return ResponseEntity.ok(event);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 
     @GetMapping("/geteventbyid/")
     public ResponseEntity<EventModel> getEventById(@RequestParam int eid) {
