@@ -11,11 +11,11 @@ import lombok.*;
 public class PaymentModel {
 
     private int pid;
-    // @Min(value = 1, message = "Amount must be greater than 0")
+ 
     private long amount;
-    // @NotBlank(message = "Payment date cannot be blank")
+
     private String paymentDate;
 
    private Registration registration;
-   // private RegistrationModel registration;
+  
 }
