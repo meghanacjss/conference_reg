@@ -26,8 +26,6 @@ private EventInter eventService;
         List<EventModel> events = eventService.getAllEvents();
         return ResponseEntity.ok(events);
     }
-
-
     @GetMapping("/geteventbyid/")
     public ResponseEntity<EventModel> getEventById(@RequestParam int eid) {
         try {
@@ -37,7 +35,6 @@ private EventInter eventService;
             return ResponseEntity.notFound().build();
         }
     }
-
     @PutMapping("/updateevent")
     public ResponseEntity<EventModel> updateEvent(@RequestBody EventModel eventModel) {
         EventModel updatedEvent = eventService.updateEvent(eventModel);
