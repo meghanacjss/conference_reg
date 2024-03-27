@@ -86,7 +86,15 @@ public class RegistrationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to cancel registration: " + e.getMessage());
         }
     }
-
+ @GetMapping("/mostRegistrations")
+    public ResponseEntity<Event> getEventWithMostRegistrations() {
+        Event eventWithMostRegistrations = registrationService.getEventWithMostRegistrations();
+        if (eventWithMostRegistrations != null) {
+            return ResponseEntity.ok(eventWithMostRegistrations);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @GetMapping("/get_rid/")
     public ResponseEntity<RegistrationModel> getRegistrationById(@RequestParam("rid") int rid) {
