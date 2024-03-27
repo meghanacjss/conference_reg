@@ -25,6 +25,7 @@ public class securityConfig {
         http.authorizeRequests(authorizeRequests ->
                 authorizeRequests
                         .requestMatchers(HttpMethod.POST,"/register").permitAll()
+                        //.requestMatchers(HttpMethod.GET,"/getall").hasAuthority("ROLE_USER")
                         .requestMatchers(HttpMethod.POST,"/login").hasAnyRole("ADMIN","USER")
                         .requestMatchers(HttpMethod.GET,"/getall").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/createattendee/").hasRole("USER")
@@ -34,16 +35,16 @@ public class securityConfig {
                         .requestMatchers(HttpMethod.GET,"/event/getevents").hasRole("USER")
                         .requestMatchers(HttpMethod.PUT,"/event/updateevent").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/event/geteventbyid/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/create/").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET,"/all").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/createpayment/").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET,"/allpayments").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/byRegistration/").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/totalPayments/").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/createall").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET,"/getall").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/createregistration").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/getallregistrations").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/byEvent/").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/byAttendee/").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/get_rid/").hasRole("ADMIN")
-                       .requestMatchers(HttpMethod.DELETE,"/cancel/").hasRole("USER")
+                       .requestMatchers(HttpMethod.DELETE,"/cancelregistration/").hasRole("USER")
         );
         http.httpBasic(Customizer.withDefaults());
         //disable cross Site request Forgery(CSRF)
