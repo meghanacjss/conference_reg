@@ -84,6 +84,16 @@ public List<RegistrationModel> getAllRegistrations() {
         }
         return null;
     }
+     public Event getEventWithMostRegistrations() {
+        List<Registration> registrations = registrationRepository.findAll();
+        Map<Event,Integer> eventCounts = registrations.stream()
+                .collect(Collectors.groupingBy(Registration::getEvent, Collectors.summingInt(registration->1)));
+
+        return eventCounts.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+    }
 public RegistrationModel cancelRegistration(int rid) {
     Registration registrationEntity = registrationRepository.findById(rid).orElse(null);
     if (registrationEntity != null) {
