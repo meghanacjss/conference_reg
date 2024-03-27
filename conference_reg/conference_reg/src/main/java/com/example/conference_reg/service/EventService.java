@@ -20,32 +20,32 @@ public class EventService implements EventInter {
     private ModelToEntity modelToEntity;
 
     public EventModel add(EventModel eventModel) {
-        Event event = modelToEntity.convertToEntity2(eventModel);
-        return entityToModel.convertToModel2(eventRepository.save(event));
+        Event event = modelToEntity.eventModelToEntity(eventModel);
+        return entityToModel.eventEntityToModel(eventRepository.save(event));
     }
 
     public List<EventModel> getAllEvents() {
         return eventRepository.findAll().stream()
-                .map(entityToModel::convertToModel2)
+                .map(entityToModel::eventEntityToModel)
                 .sorted(Comparator.comparingInt(EventModel::getEid))
                 .toList();
     }
 
     public EventModel updateEvent(EventModel eventModel) {
-        Event event = modelToEntity.convertToEntity2(eventModel);
+        Event event = modelToEntity.eventModelToEntity(eventModel);
         Event updateEvent = eventRepository.findById(event.getEid()).orElse(null);
         if (updateEvent != null) {
             updateEvent.setEname(event.getEname());
             updateEvent.setDate(event.getDate());
             updateEvent.setVenue(event.getVenue());
             eventRepository.save(updateEvent);
-            return entityToModel.convertToModel2(updateEvent);
+            return entityToModel.eventEntityToModel(updateEvent);
         }
         return null;
     }
     public EventModel getEventById(int eid) {
         Event event = eventRepository.findById(eid).orElse(null);
-        return entityToModel.convertToModel2(event);
+        return entityToModel.eventEntityToModel(event);
     }
 
 
