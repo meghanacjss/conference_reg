@@ -67,27 +67,6 @@ private EventRepository eventRepository;
                 .orElse(null);
     }
 
-    /*public Event getEventWithMostRegistrations() {
-        List<Registration> registrations = registrationRepository.findAll();
-        Map<Event,Long> eventCounts = registrations.stream()
-                .collect(Collectors.groupingBy(Registration::getEvent, Collectors.counting()));
-
-        return eventCounts.entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse(null);
-    }*/
-
-    /*public Attendee getAttendeeWithHighestRegistrationsByEvent(Event event) {
-    List<Registration> registrations = registrationRepository.findByEvent(event);
-
-    Map<Attendee, Integer> attendeeCounts = registrations.stream()
-            .collect(Collectors.groupingBy(Registration::getAttendee, Collectors.summingInt(registration -> 1)));
-    return attendeeCounts.entrySet().stream()
-            .max(Map.Entry.comparingByValue())
-            .map(Map.Entry::getKey)
-            .orElse(null);
-}*/
     public List<RegistrationModel>getRegistrationsByEvent(Event event) {
         List<Registration> registrations = registrationRepository.findByEvent(event);
         return registrations.stream()
