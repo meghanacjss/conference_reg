@@ -19,11 +19,8 @@ public class AttendeeController {
     private AttendeeInter attendeeService;
     @Autowired
     private EventInter eventService;
-
- 
     @Autowired
     private ModelToEntity modelToEntity;
-
     @PostMapping("/createattendee/")
     public ResponseEntity<AttendeeModel> createAttendee(@Valid @RequestBody AttendeeModel attendeeModel,
                                                         @RequestParam int eid) {
@@ -31,18 +28,16 @@ public class AttendeeController {
         if (event == null) {
             return ResponseEntity.notFound().build();
         }
-        Attendee attendee = modelToEntity.convertToEntity1(attendeeModel);
-        attendee.setEvent(modelToEntity.convertToEntity2(event));
+        Attendee attendee = modelToEntity.attendeeModelToEntity(attendeeModel);
+        attendee.setEvent(modelToEntity.eventModelToEntity(event));
         AttendeeModel createdAttendee = attendeeService.createAttendee(attendee);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAttendee);
     }
-
     @GetMapping("/allattendees")
     public ResponseEntity<List<AttendeeModel>> getAllAttendees() {
         List<AttendeeModel> attendees = attendeeService.getAllAttendees();
         return ResponseEntity.ok(attendees);
     }
-
     @GetMapping("/get/")
     public ResponseEntity<AttendeeModel> getAttendeeById(@RequestParam int aid) throws UserNotFoundException {
         try {
@@ -53,13 +48,7 @@ public class AttendeeController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }
-
-
-
-
-
 
 
 
