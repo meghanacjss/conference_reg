@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class EntityToModel {
 @Autowired
     PasswordEncoder passwordEncoder;
-    public AttendeeModel convertToModel1(Attendee attendee) {
+    public AttendeeModel attendeeEntityToModel(Attendee attendee) {
         AttendeeModel attendeeModel = new AttendeeModel();
         attendeeModel.setAid(attendee.getAid());
         attendeeModel.setAname(attendee.getAname());
@@ -20,7 +20,7 @@ public class EntityToModel {
         return attendeeModel;
     }
 
-    public EventModel convertToModel2(Event event) {
+    public EventModel eventEntityToModel(Event event) {
         if (event == null) {
             return null;
         }
@@ -31,7 +31,7 @@ public class EntityToModel {
         eventModel.setVenue(event.getVenue());
         return eventModel;
     }
-    public OwnerModel convertToModel3(Owner owner) {
+    public OwnerModel ownerEntityToModel(Owner owner) {
         if (owner == null) {
             return null;
         }
@@ -43,7 +43,7 @@ public class EntityToModel {
         ownerModel.setEmail(owner.getEmail());
         return ownerModel;
     }
-    public PaymentModel convertToModel4(Payment payment) {
+    public PaymentModel paymentEntityToModel(Payment payment) {
         PaymentModel paymentModel = new PaymentModel();
         paymentModel.setPid(payment.getPid());
         paymentModel.setAmount(payment.getAmount());
@@ -51,7 +51,7 @@ public class EntityToModel {
         paymentModel.setRegistration(payment.getRegistration());
         return paymentModel;
     }
-    public RegistrationModel convertToModel5(Registration registration) {
+    public RegistrationModel registrationEntityToModel(Registration registration) {
         RegistrationModel registrationModel = new RegistrationModel();
         registrationModel.setRid(registration.getRid());
         registrationModel.setRdate(registration.getRdate());
