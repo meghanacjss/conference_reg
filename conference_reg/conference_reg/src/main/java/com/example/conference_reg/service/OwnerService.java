@@ -21,13 +21,14 @@ public class OwnerService implements OwnerInter {
     private ModelToEntity modelToEntity;
 
     public OwnerModel registerOwner(OwnerModel ownerModel) {
-        Owner owner = modelToEntity.convertToEntity3(ownerModel);
+        Owner owner = modelToEntity.ownerModelToEntity(ownerModel);
         owner.setPassword(passwordEncoder.encode(owner.getPassword()));
         Owner savedOwner = ownerRepository.save(owner);
-        return entityToModel.convertToModel3(savedOwner);
+        return entityToModel.ownerEntityToModel(savedOwner);
     }
     public OwnerModel login(String username,String password) {
         Owner owner = ownerRepository.findByUsernameAndPassword(username,password);
-        return entityToModel.convertToModel3(owner);
+        return entityToModel.ownerEntityToModel(owner);
     }
+
 }
