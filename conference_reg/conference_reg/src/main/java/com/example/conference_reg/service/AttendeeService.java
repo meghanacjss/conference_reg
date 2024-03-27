@@ -12,10 +12,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 @Service
 public class AttendeeService implements AttendeeInter {
-
     @Autowired
     private AttendeeRepository attendeeRepository;
     @Autowired
@@ -25,21 +23,17 @@ public class AttendeeService implements AttendeeInter {
 
     public AttendeeModel createAttendee(Attendee attendee) {
         Attendee savedAttendee = attendeeRepository.save(attendee);
-        return entityToModel.convertToModel1(savedAttendee);
+        return entityToModel.attendeeEntityToModel(savedAttendee);
     }
-
     public List<AttendeeModel> getAllAttendees() {
         List<Attendee> attendees = attendeeRepository.findAll();
         return attendees.stream()
-                .map(entityToModel::convertToModel1)
+                .map(entityToModel::attendeeEntityToModel)
                 .sorted(Comparator.comparingInt(AttendeeModel::getAid))
                 .collect(Collectors.toList());
     }
-
     public Optional<AttendeeModel> getAttendeeById(int aid) throws UserNotFoundException {
         Optional<Attendee> optionalAttendee = attendeeRepository.findById(aid);
-        return optionalAttendee.map(entityToModel::convertToModel1);
+        return optionalAttendee.map(entityToModel::attendeeEntityToModel);
     }
-
-
 }
