@@ -22,16 +22,17 @@ public class PaymentController {
     @Autowired
     private RegistrationInter registrationService;
 
-    @PostMapping("/create/")
+    @PostMapping("/createpayment/")
     public ResponseEntity<PaymentModel> createPayment(@Valid @RequestBody PaymentModel paymentModel, @RequestParam int rid) {
         Registration registration = new Registration();
         registration.setRid(rid);
+
         paymentModel.setRegistration(registration);
         PaymentModel createdPayment = paymentService.createPayment(paymentModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPayment);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/allpayments")
     public ResponseEntity<List<PaymentModel>> getAllPayments() {
         try {
             List<PaymentModel> payments = paymentService.getAllPayments();
@@ -41,6 +42,7 @@ public class PaymentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 
     @GetMapping("/byRegistration/")
     public ResponseEntity<List<PaymentModel>> getPaymentsByRegistration(@RequestParam int rid) {
@@ -65,3 +67,5 @@ public class PaymentController {
     }
 
 }
+
+
