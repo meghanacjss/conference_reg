@@ -14,30 +14,28 @@ import java.util.List;
 
 @Service
 public class PaymentService implements PaymentInter {
-@Autowired
-private PaymentRepository paymentRepository;
+    @Autowired
+    private PaymentRepository paymentRepository;
     @Autowired
     private EntityToModel entityToModel;
     @Autowired
     private ModelToEntity modelToEntity;
-    public PaymentModel createPayment(@Valid PaymentModel paymentModel) {
-        Payment payment = modelToEntity.convertToEntity4(paymentModel);
+    public PaymentModel createPayment(PaymentModel paymentModel) {
+        Payment payment = modelToEntity.paymentModelToEntity(paymentModel);
         Payment savedPayment = paymentRepository.save(payment);
-        return entityToModel.convertToModel4(savedPayment);
+        return entityToModel.paymentEntityToModel(savedPayment);
     }
-
-
     public List<PaymentModel> getAllPayments(){
         return paymentRepository.findAll().stream()
                 .filter(payment -> payment.getAmount() > 500)
                 .sorted(Comparator.comparing(Payment::getPaymentDate))
-                .map(entityToModel::convertToModel4)
+                .map(entityToModel::paymentEntityToModel)
                 .toList();
     }
     public List<PaymentModel>getPaymentsByRegistration(Registration registration) {
         List<Payment> payments = paymentRepository.findByRegistration(registration);
         return payments.stream()
-                .map(entityToModel::convertToModel4)
+                .map(entityToModel::paymentEntityToModel)
                 .toList();
     }
     public long calculateTotalPayments(Registration registration) {
